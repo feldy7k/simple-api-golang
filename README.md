@@ -5,14 +5,14 @@ Run:
 
 Swagger:
 - http://localhost:8080/swagger/index.html
-![image](https://github.com/user-attachments/assets/dbcd38d8-0d35-4a1f-89c7-f74dd07bd3ba)
 
+![image](https://github.com/user-attachments/assets/06fb12c6-1540-436f-a7ef-11bb9293a450)
 
 Modify & Update Swagger:
 - swag init --generalInfo cmd/main.go
 
 
-Database: PostgreSQL
+Database: postgresql-17.5-1
 
 CREATE TABLE users (
     id UUID PRIMARY KEY,
