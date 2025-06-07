@@ -1,0 +1,51 @@
+basePath: /api/v1
+host: localhost:8080
+info:
+  contact: {}
+  description: A simple user CRUD API using Gin.
+  title: Go User API
+  version: "1.0"
+paths:
+  /users:
+    get:
+      description: get users list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get users list
+      tags:
+      - users
+    post:
+      description: Create new user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Create user
+      tags:
+      - users
+  /users/:id:
+    delete:
+      description: Delete user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Delete user
+      tags:
+      - users
+    get:
+      description: get users by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get users by ID
+      tags:
+      - users
+swagger: "2.0"
