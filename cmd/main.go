@@ -17,4 +17,5 @@ func main() {
 	routes.SetupAndRun()
 	cfg := config.LoadConfig()
     fmt.Println("Server DB Postgresql running on port:", cfg.DBPort)
+	fmt.Println("Web Server http running on port:", cfg.HTTPPort)
 }

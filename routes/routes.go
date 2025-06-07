@@ -6,6 +6,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"go-api/controllers"
 	_ "go-api/docs"
+	"go-api/config"
 )
 
 func SetupAndRun() {
@@ -22,5 +23,6 @@ func SetupAndRun() {
 		v1.DELETE("/users/:id", controllers.DeleteUser)
 	}
 
-	r.Run(":8080")
+	cfg := config.LoadConfig()
+	r.Run(":" + cfg.HTTPPort)
 }
