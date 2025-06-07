@@ -20,6 +20,7 @@ func SetupAndRun() {
 		v1.GET("/users", controllers.GetUsers)
 		v1.GET("/users/:id", controllers.GetUser)
 		v1.POST("/users", controllers.CreateUser)
+		v1.PUT("/users", controllers.UpdateUser)
 		v1.DELETE("/users/:id", controllers.DeleteUser)
 	}
 

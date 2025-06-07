@@ -64,6 +64,29 @@ func CreateUser(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
+// UpdateUser godoc
+// @Summary      Update user
+// @Description  Update user
+// @Tags         users
+// @Accept json
+// @Produce json
+// @Param user body models.User true "User data"
+// @Success 200
+// @Router       /users [put]
+func UpdateUser(c *gin.Context) {
+	var user models.User
+	if err := c.ShouldBindJSON(&user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	err := services.UpdateUser(user)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "UpdateUser failed"})
+		return
+	}
+	c.JSON(http.StatusOK, user)
+}
+
 // DeleteUser godoc
 // GetUser godoc
 // @Summary      Delete user

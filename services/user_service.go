@@ -50,6 +50,12 @@ func CreateUser(user models.User) error {
 	return err
 }
 
+func UpdateUser(user models.User) error {
+	query := "UPDATE users SET name=$2, email=$3 WHERE id=$1"
+	_, err := config.DB.Exec(context.Background(), query, user.ID, user.Name, user.Email)
+	return err
+}
+
 func RemoveUser(id string) error {
 	query := "DELETE FROM users WHERE id=$1"
 	_, err := config.DB.Exec(context.Background(), query, id)
