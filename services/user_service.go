@@ -44,10 +44,14 @@ func GetUser(id string) (*models.User, error) {
 	return &user, nil
 }
 
-func AddUser(user models.User) {
-	
+func CreateUser(user models.User) error {
+	query := "INSERT INTO users (id, name, email) VALUES ($1, $2, $3)"
+	_, err := config.DB.Exec(context.Background(), query, user.ID, user.Name, user.Email)
+	return err
 }
 
-func RemoveUser(id string) {
-	
+func RemoveUser(id string) error {
+	query := "DELETE FROM users WHERE id=$1"
+	_, err := config.DB.Exec(context.Background(), query, id)
+	return err
 }

@@ -44,7 +44,9 @@ func GetUser(c *gin.Context) {
 // @Summary      Create user
 // @Description  Create new user
 // @Tags         users
-// @Produce      json
+// @Accept json
+// @Produce json
+// @Param user body models.User true "User data"
 // @Success 200
 // @Router       /users [post]
 func CreateUser(c *gin.Context) {
@@ -54,8 +56,12 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 	user.ID = uuid.New().String()
-	services.AddUser(user)
-	c.JSON(http.StatusCreated, user)
+	err := services.CreateUser(user)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "CreateUser failed"})
+		return
+	}
+	c.JSON(http.StatusOK, user)
 }
 
 // DeleteUser godoc
@@ -68,6 +74,10 @@ func CreateUser(c *gin.Context) {
 // @Router       /users/:id [delete]
 func DeleteUser(c *gin.Context) {
 	id := c.Param("id")
-	services.RemoveUser(id)
-	c.Status(http.StatusNoContent)
+	err := services.RemoveUser(id)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "DeleteUser failed"})
+		return
+	}
+	c.JSON(http.StatusOK, id)
 }

@@ -1,4 +1,14 @@
 basePath: /api/v1
+definitions:
+  models.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact: {}
@@ -18,7 +28,16 @@ paths:
       tags:
       - users
     post:
+      consumes:
+      - application/json
       description: Create new user
+      parameters:
+      - description: User data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
       produces:
       - application/json
       responses:
