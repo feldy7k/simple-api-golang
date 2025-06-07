@@ -8,7 +8,8 @@ Run:
 Swagger:
 - http://localhost:8080/swagger/index.html
 
-![image](https://github.com/user-attachments/assets/06fb12c6-1540-436f-a7ef-11bb9293a450)
+![image](https://github.com/user-attachments/assets/415b6a46-ba7b-4a2f-8144-b09813371cd6)
+
 
 Modify & Update Swagger:
 - swag init --generalInfo cmd/main.go
