@@ -10,7 +10,11 @@ import (
 var DB *pgx.Conn
 
 func ConnectDatabase() {
-	dsn := "postgres://postgres:pgfeldymaster@localhost:5432/coursedb"
+	cfg := LoadConfig()
+
+    dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+        cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort,
+    )
 
 	conn, err := pgx.Connect(context.Background(), dsn)
 	if err != nil {
