@@ -7,7 +7,8 @@ Swagger:
 - http://localhost:8080/swagger/index.html
 
 Modify & Update Swagger:
-- swag init
+- swag init --generalInfo cmd/main.go
+
 
 Database: PostgreSQL
 
