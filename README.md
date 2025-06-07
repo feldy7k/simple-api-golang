@@ -1,5 +1,7 @@
 Simple API using Golang
 
+Created: June 2025
+
 Run:
 - go run cmd/main.go
 
@@ -13,6 +15,7 @@ Modify & Update Swagger:
 
 
 Database: postgresql-17.5-1
+Golang ver: go1.24.4
 
 CREATE TABLE users (
     id UUID PRIMARY KEY,
