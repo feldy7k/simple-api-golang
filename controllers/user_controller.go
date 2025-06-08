@@ -18,7 +18,7 @@ import (
 func GetUsers(c *gin.Context) {
 	users, err := services.GetUsers()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch users"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Failed to fetch users"})
 		return
 	}
 	c.JSON(http.StatusOK, users)
@@ -58,7 +58,7 @@ func CreateUser(c *gin.Context) {
 	user.ID = uuid.New().String()
 	err := services.CreateUser(user)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "CreateUser failed"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "CreateUser failed"})
 		return
 	}
 	c.JSON(http.StatusOK, user)
@@ -81,7 +81,7 @@ func UpdateUser(c *gin.Context) {
 	}
 	err := services.UpdateUser(user)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "UpdateUser failed"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "UpdateUser failed"})
 		return
 	}
 	c.JSON(http.StatusOK, user)
@@ -99,7 +99,7 @@ func DeleteUser(c *gin.Context) {
 	id := c.Param("id")
 	err := services.RemoveUser(id)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "DeleteUser failed"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "DeleteUser failed"})
 		return
 	}
 	c.JSON(http.StatusOK, id)
