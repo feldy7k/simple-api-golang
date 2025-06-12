@@ -22,6 +22,9 @@ func SetupAndRun() {
 		v1.POST("/users", controllers.CreateUser)
 		v1.PUT("/users", controllers.UpdateUser)
 		v1.DELETE("/users/:id", controllers.DeleteUser)
+
+		// auth
+		v1.POST("/auth", controllers.AuthLogin)
 	}
 
 	cfg := config.LoadConfig()

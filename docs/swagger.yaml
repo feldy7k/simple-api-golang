@@ -1,5 +1,12 @@
 basePath: /api/v1
 definitions:
+  models.Auth:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
   models.User:
     properties:
       email:
@@ -16,6 +23,24 @@ info:
   title: Go User API
   version: "1.0"
 paths:
+  /auth:
+    post:
+      description: Login
+      parameters:
+      - description: Auth data
+        in: body
+        name: auth
+        required: true
+        schema:
+          $ref: '#/definitions/models.Auth'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Login
+      tags:
+      - auth
   /users:
     get:
       description: get users list
